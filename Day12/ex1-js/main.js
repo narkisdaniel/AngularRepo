@@ -7,20 +7,26 @@ Calculator.prototype.add = function() {
     return (this.a+this.b);
 }
 
-Calculator.prototype.sub = function() {
+Calculator.prototype.subtract = function() {
     return (this.a-this.b);
 }
 
-Calculator.prototype.mul = function() {
+Calculator.prototype.multiply = function() {
     return (this.a*this.b);
 }
 
 Calculator.prototype.log = function() {
-    console.log(this.add());
-    console.log(this.sub());
-    console.log(this.mul());
+    console.log(this.a+'+'+this.b+'='+this.add());
+    console.log(this.a+'-'+this.b+'='+this.subtract());
+    console.log(this.a+'*'+this.b+'='+this.multiply());
 
 }
 
+console.log('Hello World');
 var c1=new Calculator(5,10);
+var c2=new Calculator(10,9);
 c1.log();
+setTimeout(function(){
+
+    c2.log()
+        },2000);
