@@ -27,6 +27,5 @@ var c1=new Calculator(5,10);
 var c2=new Calculator(10,9);
 c1.log();
 setTimeout(function(){
-
     c2.log()
         },2000);

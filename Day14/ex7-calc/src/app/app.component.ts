@@ -10,16 +10,31 @@ export class AppComponent {
     //data
     firstNumber:number = 0;
     secondNumber:number = 0;
-    results: string[]=[];
-    isBusy:boolean=false;
- 
+    sum: number | null= null;
+    difference: number | null = null;
+    product: number | null = null;
+
+    get hasResults(): boolean {
+        return (this.sum !== null) &&
+        (this.difference !== null) &&
+        (this.product !== null);
+    }
+
+
     //methods
-    setFirstNumber(value: number):void {
-        this.firstNumber = value;
+    reset():void{
+        this.difference=null;
+        this.sum=null;
+        this.product=null;
     }
-    setSecondNumber(value: number):void {
-        this.secondNumber = value;
+
+    setFirstNumber(value: string):void {
+        this.firstNumber = Number(value);
+        this.reset();
     }
+    setSecondNumber(value: string):void {
+        this.secondNumber = Number(value);
+        this.reset();    }
     add(): number {
         return this.firstNumber + this.secondNumber;
     }
@@ -33,16 +48,13 @@ export class AppComponent {
     }
 
     calculate(): void {
-        this.isBusy=true;
-        setTimeout(() => {
-            this.isBusy = false;
-            this.results = [
-                `${this.firstNumber} + ${this.secondNumber} = ${this.add()}`,
-                `${this.firstNumber} - ${this.secondNumber} = ${this.subtract()}`,
-                `${this.firstNumber} * ${this.secondNumber} = ${this.multiply()}`,
-            ];
-        } , 2000);
-
+        if ((this.firstNumber === null) || (this.secondNumber === null)) {
+            this.reset();
+        }else{
+            this.sum=this.add();
+            this.difference=this.subtract();
+            this.product=this.multiply();
+        }
     }
 
 }
