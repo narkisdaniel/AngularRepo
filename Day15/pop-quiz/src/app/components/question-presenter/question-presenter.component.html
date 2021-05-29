@@ -1,0 +1,21 @@
+<h2>{{question}}</h2>
+
+<div>
+    <ul>
+        <li *ngFor="let item of options" 
+            (click)="selectAnswerOption(item)"
+            [class.chosen]="item === selectedOption">
+            {{item}}
+        </li>
+    </ul>
+</div>
+
+<div class="buttonClick">
+    <button class="isNext" *ngIf="!isLastPage"
+            (click)="moveNext()">{{buttonName}}
+    </button>
+
+    <button class="isLast" *ngIf="isLastPage"
+            (click)="endQuiz()">{{buttonName}}
+    </button>
+</div>

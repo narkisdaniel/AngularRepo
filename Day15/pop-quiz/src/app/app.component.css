@@ -1,0 +1,26 @@
+:host {
+    display: grid;
+
+    grid-template-columns: 1fr 400px  ;
+    grid-template-rows: auto 1fr;
+}
+
+.title-area{
+    grid-column: 1 / -1;
+    grid-row: 1;
+}
+
+.main-area {
+    border: 20px;
+    padding: 30px;
+    margin: 50px;
+}
+
+div {
+    border: 1px solid white;
+    margin: 4px;
+    border-radius: 9px;
+}
+
+
+
