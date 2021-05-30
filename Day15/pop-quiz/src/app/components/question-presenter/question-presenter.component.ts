@@ -1,57 +1,39 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { Question } from 'src/app/model/question';
 
 @Component({
   selector: 'app-question-presenter',
   templateUrl: './question-presenter.component.html',
   styleUrls: ['./question-presenter.component.css']
 })
-export class QuestionPresenterComponent implements OnInit {
+export class QuestionPresenterComponent implements OnInit, OnChanges {
 
   //data
   @Input()
-  question: string = '';
-
-  @Input()
-  options: string[] = [];
-
-  @Input()
-  isLastPage: boolean = false;
+  question!: Question;
 
   selectedOption: string = '';
-  buttonName: string = 'next Question'
 
   @Output()
   selectAnswer = new EventEmitter<number>();
 
-  @Output()
-  selectNext = new EventEmitter();
 
   //method
   ngOnInit(): void {
   }
+  ngOnChanges(): void {
+  }
 
   selectAnswerOption(value: string) {
-    this.selectedOption = value;
-    for (let i = 0; i < this.options.length; i++) {
-      if (value === this.options[i]) {
+    for (let i = 0; i < this.question.answers.length; i++) {
+      if (value === this.question.answers[i]) {
+        this.question.userAnswer = i;
         this.selectAnswer.emit(i);
         break;
       }
     }
   }
 
-  moveNext() {
-    if (this.selectedOption !== '') {
-      this.selectNext.emit();
-      this.selectedOption = '';
-    }
-  }
-
-  endQuiz(){
-    this.buttonName = 'end Quiz';
-    this.selectNext.emit();
-    this.selectedOption = '';
-  }
 }
 
 

@@ -10,10 +10,9 @@ export class SummaryComponent implements OnInit {
 
   //data
   @Input()
-  _question: Question[];
+  _question: Question[] = [];
 
   constructor() {
-    this._question = [];
   }
 
   //method

@@ -1,19 +1,21 @@
 h2{
-    text-align: center;
     margin-top: 10px;  
     margin-bottom: 40px;
     border-bottom:2px ridge palevioletred;
+    text-align: center;
+    width: 400px;
 }
 
 li {
     list-style: none;
     border: 2px solid lightgray;
     border-radius: 9px;
-    margin: 5px;
+    margin: 3px;
     padding: 10px;
     padding-left: 20px;
     background-color: rgb(248, 248, 248);
     cursor: pointer;
+    width: 300px;
 }
 
 li:hover {
@@ -24,27 +26,14 @@ li.chosen {
     background-color: rgb(190, 82, 172);
 }
 
-hl{
+ul{
     margin: 0%;
     padding: 0%;
+    display: grid;
 }
 
-.isNext, .isLast {
-    background-color: white; 
-    border: 3px solid #3abcc0;
-    padding: 5px;
-    margin-left: 50%;
-    margin-right: 10%;
-    margin-top:10%;
-    border-radius: 9px;
-    cursor: pointer;
-    font-size: large;
-  }
-  
-  .isNext:hover, .isLast:hover {
-    background-color: #59bdd6;
-    color: white;
-  }
+
+
   
 
 
