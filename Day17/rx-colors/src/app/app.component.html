@@ -1,0 +1,14 @@
+<app-color-editor></app-color-editor>
+
+
+<app-color-presenter class="me"
+title='Mine' [color]="myColor$ | async"></app-color-presenter>
+
+<app-color-presenter class="computer"
+  title='Computer' [color]="compColor$ | async"
+  ></app-color-presenter>
+
+  
+<button (click)="randomize()">Random</button>
+
+<span class="success" *ngIf="success$ | async">SUCCESS!!</span>
