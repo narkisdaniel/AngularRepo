@@ -1,0 +1,33 @@
+:host{
+    display: grid;
+    margin: 20px;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+h2{
+    text-align: center;
+    background-color: cadetblue;
+    margin-bottom: 50px;
+}
+
+div{
+    display: grid;
+    grid-row: auto;
+    margin: auto;
+    font-size: 30px;
+}
+
+button{
+    display: grid;
+    grid-row: auto;
+    margin: auto;
+    border-radius: 3px;
+    font-size: 20px;
+}
+input{
+    display: grid;
+    grid-row: auto;
+    margin: auto;
+    width: 200px;
+    padding: 10px
+}
+

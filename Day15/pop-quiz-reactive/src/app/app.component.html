@@ -1,0 +1,23 @@
+<div class="title-area">
+  <app-title></app-title>
+</div>
+
+<div class="main-area" >
+  <app-question-presenter *ngIf="!isQuizOver"
+    [question]="currentQuestion"
+    (selectAnswer)="selectAnswer($event)"
+  >
+  </app-question-presenter>
+
+  <app-quiz-over *ngIf="isQuizOver"
+  [answers]="updateScore()"
+  >
+  </app-quiz-over>
+</div>
+
+<div class="summary-area">
+  <app-summary
+    [_question]="summary"
+  >
+  </app-summary>
+</div>

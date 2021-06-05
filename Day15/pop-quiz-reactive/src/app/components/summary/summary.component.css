@@ -1,0 +1,31 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;    
+    align-items: stretch;
+    border-radius: 10px;
+    padding: auto;
+}
+
+.answerQuestion{
+    margin: 3px;
+    height: 100px;
+    text-align: center;
+    border-radius: 8px;
+    margin-top: 3px;
+    color:white;
+}
+.usrAnswer{
+    text-align: center;
+    margin-top: 5px;
+}
+
+.answerQuestion.correctAnswer{
+    background: rgb(176, 235, 176);
+    border: 4px solid rgb(54, 199, 86);
+}
+
+.answerQuestion.wrongAnswer{
+    border: 4px solid red;
+    background: rgb(238, 139, 139);
+}

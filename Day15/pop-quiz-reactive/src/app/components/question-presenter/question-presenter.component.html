@@ -1,0 +1,11 @@
+<h2>{{question.caption}}</h2>
+
+<div>
+    <ul>
+        <li *ngFor="let item of question.answers" 
+            (click)="selectAnswerOption(item)"
+            [class.chosen]="item === selectedOption">
+            {{item}}
+        </li>
+    </ul>
+</div>

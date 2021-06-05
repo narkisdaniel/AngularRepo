@@ -1,0 +1,11 @@
+<button class="Prev" *ngIf="hasPrev$ | async" (click)="gotoPrev()" ><</button>
+<div  class="showJoke" *ngIf="(joke$ | async) as joke">
+    <p>{{joke.type}}</p>
+    <h1>{{joke.setup}}</h1>
+    <h2>{{joke.punchline}}</h2>
+</div>
+
+<button clas="Next" *ngIf="hasNext$ | async" (click)="gotoNext()">></button>
+<div>
+    <button class="search" (click)=gotoSearch()>New Search</button>
+</div>

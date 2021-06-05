@@ -1,0 +1,10 @@
+<div class="root">
+    <div class="answerQuestion" 
+        *ngFor="let item of _question"
+        [class.correctAnswer]="item.userAnswer===item.correctAnswer"
+        [class.wrongAnswer]="item.userAnswer!==item.correctAnswer"
+        >
+        <h3>{{item.caption}}</h3>
+        <p class="usrAnswer">{{item.answers[item.userAnswer]}}</p>
+    </div>
+</div>
