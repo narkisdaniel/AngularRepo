@@ -30,14 +30,12 @@ export class DataService {
 
   getJokesCount(keyword: string): Promise<number> {
     const url = `${this.baseUrl}/jokes`;
+    let params = (new HttpParams()).set('q', keyword);
 
     return this.http
-      .get<Joke[]>(url)
-      .pipe(map(jokes => jokes.filter(joke => joke.setup.includes(keyword))),
-        map(list => list.length))
-      .toPromise()
-      ;
-
+            .get<Joke[]>(url,{params})
+            .pipe(map(list=>list.length))
+            .toPromise();
   }
 
   getJokesCountByType(keyword: string, type: string): Promise<number> {

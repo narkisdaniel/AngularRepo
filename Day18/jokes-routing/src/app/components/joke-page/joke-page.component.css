@@ -4,9 +4,27 @@
     padding: 50px;
     grid-template-rows: 1fr auto;
     grid-row:auto;
-    grid-template-columns:1fr 1fr 1fr   ;
 }
 
+.getJoke{
+    display: grid;
+    grid-template-columns: auto auto auto ;
+    grid-column-gap: 50px;
+    padding: 30px;
+    
+}
+
+.getJoke.Prev{
+    grid-column-start: 1;
+    grid-column-end: 2;
+
+}
+
+.getJoke.Next{
+    grid-column-start: 5;
+    grid-column-end: 6;
+
+}
 
 .showJoke {
     display: grid;
@@ -16,6 +34,7 @@
     padding: 6px;
     border: 2px solid black;
 }
+
 
 
 button {
