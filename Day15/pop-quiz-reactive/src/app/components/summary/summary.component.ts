@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Question } from 'src/app/model/question';
+import { QuizService } from 'src/app/services/quiz.service';
 
 @Component({
   selector: 'app-summary',
@@ -8,17 +10,16 @@ import { Question } from 'src/app/model/question';
 })
 export class SummaryComponent implements OnInit {
 
-  //data
-  @Input()
-  _question: Question[] = [];
-
-  constructor() {
+  constructor(private data:QuizService) {
   }
 
   //method
   ngOnInit(): void {
   }
 
+  get historyQuestion$(): Observable<Question[]>{
+    return this.data.getHistoryQuestion();
+  }
   
 
 }

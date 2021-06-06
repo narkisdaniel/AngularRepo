@@ -1,37 +1,29 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Question } from 'src/app/model/question';
+import { QuizService } from 'src/app/services/quiz.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-question-presenter',
   templateUrl: './question-presenter.component.html',
   styleUrls: ['./question-presenter.component.css']
 })
-export class QuestionPresenterComponent implements OnInit, OnChanges {
+export class QuestionPresenterComponent implements OnInit {
 
   //data
-  @Input()
-  question!: Question;
+  currentQuestion$!:Observable<Question>;
 
-  selectedOption: string = '';
-
-  @Output()
-  selectAnswer = new EventEmitter<number>();
-
+  constructor(private data:QuizService){}
 
   //method
   ngOnInit(): void {
-  }
-  ngOnChanges(): void {
+    this.currentQuestion$=this.data.getCurrentQuestion();
   }
 
-  selectAnswerOption(value: string) {
-    for (let i = 0; i < this.question.answers.length; i++) {
-      if (value === this.question.answers[i]) {
-        this.question.userAnswer = i;
-        this.selectAnswer.emit(i);
-        break;
-      }
-    }
+
+  async selectAnswerOption(answerIndex: number) {
+    await this.data.answerQuestion(answerIndex);
   }
 
 }

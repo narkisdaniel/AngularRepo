@@ -1,7 +1,9 @@
 import { OnInit } from '@angular/core';
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Question } from 'src/app/model/question';
 import { QUESTIONS } from './model/questions';
+import { QuizService } from './services/quiz.service';
 
 
 @Component({
@@ -12,44 +14,14 @@ import { QUESTIONS } from './model/questions';
 export class AppComponent implements OnInit {
   //data
   title = 'pop-quiz';
-  currentIndexQuestion!: number;
-  currentQuestion!: Question;
-  isQuizOver!: boolean;
-  summary: Question[] = [];
   
-  constructor() {
+  constructor(private data:QuizService) {
   }
   ngOnInit(): void {
-    this.currentIndexQuestion = 0;
-    this.currentQuestion = QUESTIONS[this.currentIndexQuestion];
-    this.isQuizOver=false;
   }
 
-  //method 
-  selectAnswer(value: number): void {
-    if (!this.isQuizOver) {
-      QUESTIONS[this.currentIndexQuestion].userAnswer = value;
-    
-    this.summary.push(this.currentQuestion);
-    }
-    if (this.currentIndexQuestion !== QUESTIONS.length - 1) {
-      this.currentIndexQuestion++;
-      this.currentQuestion = QUESTIONS[this.currentIndexQuestion];
-    } else {
-      this.isQuizOver = true;
-    }
-  }
-
-  updateScore(): [number,number][] {
-
-    let arr: [a:number,b:number][]=[];
-
-    for (let index = 0; index < QUESTIONS.length; index++) {
-      let ques=QUESTIONS[index];
-      arr.push([ques.correctAnswer,ques.userAnswer]);
-    }    
-
-    return arr;
+  get isQuizOver$():Observable<boolean>{
+    return this.data.isGameOver();
   }
 
 }

@@ -1,11 +1,10 @@
-<h2>{{question.caption}}</h2>
+<div *ngIf="(currentQuestion$ | async) as question">
 
-<div>
+    <h2>{{question.caption}}</h2>
+
     <ul>
-        <li *ngFor="let item of question.answers" 
-            (click)="selectAnswerOption(item)"
-            [class.chosen]="item === selectedOption">
-            {{item}}
+        <li *ngFor="let item of question.answers; let i=index "
+         (click)="selectAnswerOption(i)">{{item}}
         </li>
     </ul>
 </div>

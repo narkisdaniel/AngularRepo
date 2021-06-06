@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import * as EventEmitter from 'events';
+import { QuizService } from 'src/app/services/quiz.service';
 
 @Component({
   selector: 'app-quiz-over',
@@ -8,29 +9,15 @@ import * as EventEmitter from 'events';
 })
 export class QuizOverComponent implements OnInit {
 
-  //data
-  @Input()
-  score: number = 0;
 
-  @Input()
-  answers: [number, number][] = [];
-
+  score:number=0;
   endQuiz: string = 'Quiz Over!';
   scoreOut: string = 'Your score is: ';
 
-  //methods
-  ngOnInit(): void {
-    this.updateScore();
-  }
+  constructor(private data:QuizService){}
 
-  updateScore() {
-    let correctAnswers = 0;
-    for (let index = 0; index < this.answers.length; index++) {
-      let ans = this.answers[index];
-      if (ans[0] === ans[1]) {
-        correctAnswers++;
-      }
-    }
-    this.score = 100 * correctAnswers / this.answers.length;
+  ngOnInit(): void {
+    this.score = this.data.getScore();
+
   }
 }
